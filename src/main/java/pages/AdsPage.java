@@ -1,13 +1,13 @@
 package pages;
 
-import data.Ad;
+import data.Advertisement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static data.Ad.getAdIdFromTable;
+import static data.Advertisement.getAdIdFromTable;
 import static utils.Randomizer.getRandomNumbers;
 
 /**
@@ -31,9 +31,9 @@ public class AdsPage extends Page {
         web.clickElement("AdvancedSearchLink");
     }
 
-    public List<Ad> selectAds(int quantity) {
+    public List<Advertisement> selectAds(int quantity) {
         List<WebElement> adTableRows = web.findElements("AdTableRow");
-        List<Ad> ads = new ArrayList<>();
+        List<Advertisement> ads = new ArrayList<>();
 
         for (int i : getRandomNumbers(adTableRows.size(), quantity)) {
             String trId = adTableRows.get(i).getAttribute("id");
@@ -44,7 +44,7 @@ public class AdsPage extends Page {
             web.clickElementById("c" + adId);
             LOG.info("Select ad with id " + adId);
 
-            Ad ad = new Ad();
+            Advertisement ad = new Advertisement();
             ad.setId(adId);
             ad.setHeader(getAdText(adId));
 
@@ -62,21 +62,21 @@ public class AdsPage extends Page {
         web.clickElement("ShowSelectedAdsButton");
     }
 
-    public boolean checkSelectedElements(List<Ad> selected){
+    public boolean checkSelectedElements(List<Advertisement> selected){
         List<WebElement> adTableRows = web.findElements("AdTableRow");
 
         if (selected.size() == adTableRows.size()) {
             int found = 0;
-            for (Ad ad : selected) {
+            for (Advertisement ad : selected) {
                 int i = 0;
                 while (i < adTableRows.size()) {
                     if (ad.getId() == getAdIdFromTable(adTableRows.get(i).getAttribute("id"))) {
-                        LOG.info("Ad with id " + ad.getId() + " found");
+                        LOG.info("Advertisement with id " + ad.getId() + " found");
                         found++;
                         adTableRows.remove(i);
                         i = adTableRows.size();
                     } else if (i == adTableRows.size() - 1) {
-                        LOG.error("Ad with id " + ad.getId() + " not found");
+                        LOG.error("Advertisement with id " + ad.getId() + " not found");
                     }
                     i++;
                 }

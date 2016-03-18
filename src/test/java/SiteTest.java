@@ -1,7 +1,6 @@
-import data.Ad;
+import data.Advertisement;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -12,25 +11,25 @@ public class SiteTest extends ClassFixture {
 
     @Test
     public void CheckAdsTest(){
-        ss.mainPage.chooseLanguage("RU");
-        ss.mainPage.chooseElectronicsCategory();
-        ss.mainPage.goToSearch();
-        ss.searchPage.searchByKeyword("Компьютер");
-        ss.searchPage.selectCity("Рига");
-        ss.searchPage.selectPeriod("За последний месяц");
-        ss.searchPage.startSearch();
-        ss.adsPage.sortResultsByPrice();
-        ss.adsPage.selectDealCategory("Продажа");
-        ss.adsPage.goToAdvancedSearch();
-        ss.searchPage.setPriceLimits("0", "300");
-        ss.searchPage.startSearch();
-        List<Ad> ads = ss.adsPage.selectAds(3);
-        ss.adsPage.showSelectedAds();
-        Assert.assertTrue(ss.adsPage.checkSelectedElements(ads));
+        site.mainPage.chooseLanguage("RU");
+        site.mainPage.chooseElectronicsCategory();
+        site.mainPage.goToSearch();
+        site.searchPage.searchByKeyword("Компьютер");
+        site.searchPage.selectCity("Рига");
+        site.searchPage.selectPeriod("За последний месяц");
+        site.searchPage.startSearch();
+        site.adsPage.sortResultsByPrice();
+        site.adsPage.selectDealCategory("Продажа");
+        site.adsPage.goToAdvancedSearch();
+        site.searchPage.setPriceLimits("0", "300");
+        site.searchPage.startSearch();
+        List<Advertisement> ads = site.adsPage.selectAds(3);
+        site.adsPage.showSelectedAds();
+        Assert.assertTrue(site.adsPage.checkSelectedElements(ads));
     }
 
     @AfterMethod
     public void afterTest(){
-        ss.adsPage.clearSelectedAds();
+        site.adsPage.clearSelectedAds();
     }
 }

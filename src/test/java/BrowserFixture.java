@@ -12,14 +12,14 @@ import java.util.concurrent.TimeUnit;
 public class BrowserFixture {
 
     public static WebDriver driver;
-    public static Site ss;
+    public static Site site;
     public static final Logger LOG = Logger.getLogger(ClassNameUtil.getCurrentClassName());
     public static final String wait = PropertyLoader.loadProperty("wait.timeout");
 
     @BeforeSuite(alwaysRun = true)
     public static void setBrowser() throws Exception {
         driver = WebDriverFactory.initDriver();
-        ss = new Site(driver);
+        site = new Site(driver);
 
         driver.manage().timeouts().implicitlyWait(Long.parseLong(wait), TimeUnit.SECONDS);
         driver.get(PropertyLoader.loadProperty("site.url"));

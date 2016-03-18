@@ -5,7 +5,7 @@ import static java.lang.Integer.parseInt;
 /**
  * Created by zhabenya on 17.03.16.
  */
-public class Ad {
+public class Advertisement {
 
     private int id;
     private String header;
@@ -29,7 +29,7 @@ public class Ad {
 
     @Override
     public String toString() {
-        return "Ad{" +
+        return "Advertisement{" +
                 "id=" + id +
                 ", header='" + header + '\'' +
                 '}';
