@@ -47,6 +47,7 @@ public class AdsPage extends Page {
             Advertisement ad = new Advertisement();
             ad.setId(adId);
             ad.setHeader(getAdText(adId));
+            ad.setTableLocator(trId);
 
             ads.add(ad);
         }
@@ -60,6 +61,16 @@ public class AdsPage extends Page {
     public void showSelectedAds() {
         scrollPageToElement("ShowSelectedAdsButton");
         web.clickElement("ShowSelectedAdsButton");
+    }
+
+    public boolean checkSelectedAd(Advertisement selected){
+        if (web.findElementById(selected.getTableLocator())){
+             LOG.info("Advertisement with id " + selected.getId() + " found");
+            return true;
+        } else {
+            LOG.error("Advertisement with id " + selected.getId() + " not found");
+            return false;
+        }
     }
 
     public boolean checkSelectedElements(List<Advertisement> selected){

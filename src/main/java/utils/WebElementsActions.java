@@ -64,5 +64,10 @@ public class WebElementsActions {
         return driver.findElements(config.ui(elementLocator));
     }
 
+    public boolean findElementById(String elementLocator){
+        return driver.findElements(By.id(elementLocator)).size() > 0;
+    }
+
+
 
 }

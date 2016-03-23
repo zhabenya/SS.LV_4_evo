@@ -25,18 +25,6 @@
                 <browser.name>chrome</browser.name>
             </properties>
         </profile>
-        <profile>
-            <id>phantomjs</id>
-            <properties>
-                <browser.name>phantomjs</browser.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>ie</id>
-            <properties>
-                <browser.name>ie</browser.name>
-            </properties>
-        </profile>
     </profiles>
 
     <dependencies>

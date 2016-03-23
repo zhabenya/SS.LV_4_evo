@@ -1,6 +1,7 @@
 import data.Advertisement;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
@@ -8,6 +9,8 @@ import java.util.List;
  * Created by zhabenya on 16.03.16.
  */
 public class SiteTest extends ClassFixture {
+
+    SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void CheckAdsTest(){
@@ -25,7 +28,13 @@ public class SiteTest extends ClassFixture {
         site.searchPage.startSearch();
         List<Advertisement> ads = site.adsPage.selectAds(3);
         site.adsPage.showSelectedAds();
-        Assert.assertTrue(site.adsPage.checkSelectedElements(ads));
+
+        softAssert.assertTrue(site.adsPage.checkSelectedAd(ads.get(0)));
+        softAssert.assertTrue(site.adsPage.checkSelectedAd(ads.get(1)));
+        softAssert.assertTrue(site.adsPage.checkSelectedAd(ads.get(2)));
+        softAssert.assertAll();
+
+//        Assert.assertTrue(site.adsPage.checkSelectedElements(ads));
     }
 
     @AfterMethod

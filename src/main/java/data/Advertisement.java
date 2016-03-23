@@ -10,6 +10,7 @@ public class Advertisement {
     private int id;
     private String header;
     private String price;
+    private String tableLocator;
 
     public int getId() {
         return id;
@@ -25,6 +26,14 @@ public class Advertisement {
 
     public void setHeader(String header) {
         this.header = header;
+    }
+
+    public String getTableLocator() {
+        return tableLocator;
+    }
+
+    public void setTableLocator(String tableLocator) {
+        this.tableLocator = tableLocator;
     }
 
     @Override

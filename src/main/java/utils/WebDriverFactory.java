@@ -3,7 +3,6 @@ package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.testng.Assert;
 
 /**
@@ -15,7 +14,6 @@ public class WebDriverFactory {
     /*Browsers constants*/
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
-    private static final String PHANTOMJS = "phantomjs";
     public static WebDriver driverWrapper;
 
     public WebDriverFactory() {
@@ -25,9 +23,6 @@ public class WebDriverFactory {
 
         if(FIREFOX.equals(browserName)){
             driverWrapper = new FirefoxDriver();
-
-        } else if(PHANTOMJS.equals(browserName)){
-            driverWrapper = new PhantomJSDriver();
 
         } else if(CHROME.equals(browserName)){
             driverWrapper = new ChromeDriver();
