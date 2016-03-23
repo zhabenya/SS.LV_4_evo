@@ -9,7 +9,7 @@ Please, make sure you have Java and Maven installed.
 2. Run test in IDE or in terminal `mvn test`
 
 **Note**
-Currently tests run in Firefox WebDriver.
+- Currently tests run in Firefox WebDriver.
 In /src/main/resources/application.properties file you can change it to another browser or uncomment line
 `browser.name=${browser.name}` to enable Maven profiles.
-
+- In case tests fail because of misinterpreting of cyrrilic letters, change encoding of /src/main/resources/UIMapping.properties file to **ISO-8859-1** with the option native-to-ascii conversion
