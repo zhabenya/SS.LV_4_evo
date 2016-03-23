@@ -3,6 +3,7 @@ package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 
 /**
@@ -14,6 +15,7 @@ public class WebDriverFactory {
     /*Browsers constants*/
     private static final String FIREFOX = "firefox";
     private static final String CHROME = "chrome";
+    private static final String IE = "ie";
     public static WebDriver driverWrapper;
 
     public WebDriverFactory() {
@@ -26,6 +28,9 @@ public class WebDriverFactory {
 
         } else if(CHROME.equals(browserName)){
             driverWrapper = new ChromeDriver();
+
+        } else if(IE.equals(browserName)){
+            driverWrapper = new InternetExplorerDriver();
         }
 
         else {
